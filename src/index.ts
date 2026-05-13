@@ -63,6 +63,7 @@ function ContadorCaracteres(): void {
 function menu(): void {
 
     console.log ('MENU DE EXECICIOS \n');
+    console.log (' afnweifjweij');
     console.log (' 2 - VERIFICAR PAR OU IMPAR');
     console.log (' 7 - MAIOR NUMERO DO ARRAY');
     console.log (' 15 - CALCULADORA DE IMC');
