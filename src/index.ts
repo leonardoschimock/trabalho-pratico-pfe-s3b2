@@ -4,7 +4,7 @@ function ParImpar(): void{
     
     let numero: number;
 
-    numero = Number (readlineSync.question('Digite sdcsdcsdcsdum numero: '));
+    numero = Number (readlineSync.question('Digite um numero: '));
 
 
     if (numero % 2 === 0) {
