@@ -1,7 +1,7 @@
 import readlineSync from 'readline-sync';
 
 function ParImpar(): void{
-    
+
     let numero: number;
 
     numero = Number (readlineSync.question('Digite um numero: '));
