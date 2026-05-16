@@ -6,13 +6,24 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const readline_sync_1 = __importDefault(require("readline-sync"));
 function ParImpar() {
     let numero;
-    numero = Number(readline_sync_1.default.question('Digite um número: '));
+    numero = Number(readline_sync_1.default.question('Digite um numero: '));
     if (numero % 2 === 0) {
-        console.log('Número par');
+        console.log('\nNúmero par\n');
     }
     else {
-        console.log('\nNúmero ímpar');
+        console.log('\nNúmero ímpar\n');
     }
+}
+function calcularMedia() {
+    let primeiraNota;
+    let segundaNota;
+    let terceiraNota;
+    let media;
+    primeiraNota = Number(readline_sync_1.default.question('Digite a primeira nota: '));
+    segundaNota = Number(readline_sync_1.default.question('Digite a segunda nota: '));
+    terceiraNota = Number(readline_sync_1.default.question('Digite a terceira nota: '));
+    media = (primeiraNota + segundaNota + terceiraNota) / 3;
+    console.log(`\nA média das notas é: ${media}\n`);
 }
 function MaiorNumero() {
     const numeros = [10, 45, 7, 99, 23];
@@ -28,9 +39,9 @@ function CalcularIMC() {
     const peso = Number(readline_sync_1.default.question('Digite seu peso (kg): \n'));
     const altura = Number(readline_sync_1.default.question('Digite sua altura (m): \n'));
     const imc = peso / (altura * altura);
-    console.log(`Seu IMC é: ${imc.toFixed(2)}`);
+    console.log(`Seu IMC é: ${imc.toFixed(2)}\n`);
     if (imc < 18.5) {
-        console.log('Abaixo do pes\no');
+        console.log('Abaixo do peso\n');
     }
     else if (imc < 25) {
         console.log('Peso normal\n');
@@ -50,6 +61,7 @@ function ContadorCaracteres() {
 function menu() {
     console.log('MENU DE EXECICIOS \n');
     console.log(' 2 - VERIFICAR PAR OU IMPAR');
+    console.log(' 3 - CALCULAR MEDIA DE 3 NOTAS');
     console.log(' 7 - MAIOR NUMERO DO ARRAY');
     console.log(' 15 - CALCULADORA DE IMC');
     console.log(' 18 - CONTADOR DE CARACTERES');
@@ -65,6 +77,9 @@ async function sistema() {
         switch (opcao) {
             case '2':
                 await ParImpar();
+                break;
+            case '3':
+                await calcularMedia();
                 break;
             case '7':
                 await MaiorNumero();
