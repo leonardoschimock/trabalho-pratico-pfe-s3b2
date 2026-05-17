@@ -69,25 +69,59 @@ function CalcularIMC() {
         console.log('Obesidade\n');
     }
 }
+function ValidarSenha() {
+    let password;
+    do {
+        password = readline_sync_1.default.question('Digite uma senha: ');
+        let temOitoChar = password.length >= 8;
+        let temMaiuscula = /[A-Z]/.test(password);
+        let temMinuscula = /[a-z]/.test(password);
+        let temNumero = /[0-9]/.test(password);
+        if (temOitoChar &&
+            temMaiuscula &&
+            temMinuscula &&
+            temNumero) {
+            console.log('\nSenha válida!\n');
+            break;
+        }
+        else {
+            console.log('\nSenha inválida!\n');
+            if (!temOitoChar) {
+                console.log('- A senha deve ter pelo menos 8 caracteres');
+            }
+            if (!temMaiuscula) {
+                console.log('- A senha deve ter pelo menos uma letra maiúscula');
+            }
+            if (!temMinuscula) {
+                console.log('- A senha deve ter pelo menos uma letra minúscula');
+            }
+            if (!temNumero) {
+                console.log('- A senha deve ter pelo menos um número');
+            }
+            console.log();
+        }
+    } while (true);
+}
 function ContadorCaracteres() {
     const texto = readline_sync_1.default.question('Digite um texto: \n');
     const quantidade = texto.length;
     console.log(`O texto possui ${quantidade} caracteres.\n`);
 }
 function Menu() {
-    console.log('MENU DE EXECICIOS \n');
+    console.log('\n===== MENU DE EXECICIOS =====');
     console.log(' 2 - VERIFICAR PAR OU IMPAR');
     console.log(' 3 - CALCULAR MEDIA DE 3 NOTAS');
     console.log(' 7 - MAIOR NUMERO DO ARRAY');
     console.log(' 8 - CONTADOR DE VOGAIS');
     console.log(' 15 - CALCULADORA DE IMC');
+    console.log(' 16 - VALIDADOS DE SENHA');
     console.log(' 18 - CONTADOR DE CARACTERES');
     console.log(' 0 - SAIR');
 }
 // async e Promise void estão sendo usandos junto ao await para esperar uma resposta do usuario
 async function Sistema() {
     let opcao;
-    //usamos o Do While para que o o menu seja seja executado 1 vez antes da verificaçao
+    //usamos o Do While para que o o menu seja executado 1 vez antes da verificaçao
     do {
         Menu();
         opcao = readline_sync_1.default.question('Escolha uma opcao: ');
@@ -106,6 +140,9 @@ async function Sistema() {
                 break;
             case '15':
                 await CalcularIMC();
+                break;
+            case '16':
+                await ValidarSenha();
                 break;
             case '18':
                 await ContadorCaracteres();

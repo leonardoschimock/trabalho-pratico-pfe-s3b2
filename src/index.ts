@@ -36,6 +36,7 @@ function MaiorNumero(): void{
     console.log(`\nO maior número é: ${maior}\n`);
 }
 
+
 function ContarVogais(): void {
     let texto: string;
     let quantidade: number = 0;
@@ -73,6 +74,42 @@ function CalcularIMC(): void {
 }
 
 
+function ValidarSenha(): void {
+    let password: string;
+    do {
+        password = readlineSync.question('Digite uma senha: ');
+        let temOitoChar: boolean = password.length >= 8;
+        let temMaiuscula: boolean = /[A-Z]/.test(password);
+        let temMinuscula: boolean = /[a-z]/.test(password);
+        let temNumero: boolean = /[0-9]/.test(password);
+        if (
+            temOitoChar &&
+            temMaiuscula &&
+            temMinuscula &&
+            temNumero
+        ) {
+            console.log('\nSenha válida!\n');
+            break;
+        } else {
+            console.log('\nSenha inválida!\n');
+            if (!temOitoChar) {
+                console.log('- A senha deve ter pelo menos 8 caracteres');
+            }
+            if (!temMaiuscula) {
+                console.log('- A senha deve ter pelo menos uma letra maiúscula');
+            }
+            if (!temMinuscula) {
+                console.log('- A senha deve ter pelo menos uma letra minúscula');
+            }
+            if (!temNumero) {
+                console.log('- A senha deve ter pelo menos um número');
+            }
+            console.log();
+        }
+    } while (true);
+}
+
+
 function ContadorCaracteres(): void {
     const texto = readlineSync.question('Digite um texto: \n');
     const quantidade = texto.length;
@@ -81,48 +118,52 @@ function ContadorCaracteres(): void {
 
 
 function Menu(): void {
-    console.log ('MENU DE EXECICIOS \n');
+    console.log ('\n===== MENU DE EXECICIOS =====');
     console.log (' 2 - VERIFICAR PAR OU IMPAR');
     console.log (' 3 - CALCULAR MEDIA DE 3 NOTAS')
     console.log (' 7 - MAIOR NUMERO DO ARRAY');
     console.log (' 8 - CONTADOR DE VOGAIS');
     console.log (' 15 - CALCULADORA DE IMC');
+    console.log (' 16 - VALIDADOS DE SENHA');
     console.log (' 18 - CONTADOR DE CARACTERES')
     console.log (' 0 - SAIR')
 }
 
 // async e Promise void estão sendo usandos junto ao await para esperar uma resposta do usuario
 async function Sistema(): Promise <void> {
-let opcao: string;
-//usamos o Do While para que o o menu seja seja executado 1 vez antes da verificaçao
-do{
-    Menu();
-    opcao = readlineSync.question('Escolha uma opcao: ');
-    switch (opcao){
-        case '2':
-            await ParImpar();
+    let opcao: string;
+    //usamos o Do While para que o o menu seja executado 1 vez antes da verificaçao
+    do{
+        Menu();
+        opcao = readlineSync.question('Escolha uma opcao: ');
+        switch (opcao){
+            case '2':
+                await ParImpar();
                 break;
-        case '3':
-            await CalcularMedia();
-            break;
-        case '7':
-            await MaiorNumero();
+            case '3':
+                await CalcularMedia();
                 break;
-        case '8':
-            await ContarVogais();
-            break;
-        case '15':
-            await CalcularIMC();
+            case '7':
+                await MaiorNumero();
                 break;
-        case '18':
-            await ContadorCaracteres();
+            case '8':
+                await ContarVogais();
                 break;
-        case '0':
-            console.log('Encerrando o programa...')
+            case '15':
+                await CalcularIMC();
                 break;
-        default:
-            console.log('Opção inválido!')
-    }
-} while (opcao !== '0');
+            case '16':
+                await ValidarSenha();
+                break;
+            case '18':
+                await ContadorCaracteres();
+                break;
+            case '0':
+                console.log('Encerrando o programa...');
+                break;
+            default:
+                console.log('Opção inválido!');
+        }
+    } while (opcao !== '0');
 }
 Sistema();
