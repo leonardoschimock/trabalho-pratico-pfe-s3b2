@@ -1,18 +1,18 @@
 {
-  "version": "0.2.0",
-  "configurations": [
+"version": "0.2.0",
+"configurations": [
     {
-      "type": "node",
-      "request": "launch",
-      "name": "Executar Programa TypeScript",
-      "skipFiles": [
+    "type": "node",
+    "request": "launch",
+    "name": "Executar Programa TypeScript",
+    "skipFiles": [
         "<node_internals>/**"
-      ],
-      "program": "${workspaceFolder}/src/index.ts",
-      "preLaunchTask": "tsc: build - tsconfig.json",
-      "outFiles": [
+    ],
+    "program": "${workspaceFolder}/src/index.ts",
+    "preLaunchTask": "tsc: build - tsconfig.json",
+    "outFiles": [
         "${workspaceFolder}/dist/**/*.js"
-      ]
+    ]
     }
-  ]
+]
 }
