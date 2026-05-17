@@ -33,3 +33,50 @@ function ContarVogais(): void {
     console.log(`\nQuantidade de vogais: ${quantidade}\n`);
 }
 ContarVogais();
+
+function Tabuada(): void {
+    let numero: number;
+    let resultado: number;
+    numero = Number(readlineSync.question('Digite um numero para exibir a tabuada: '));
+    for (let i = 1; i <= 10; i++) {
+        resultado = numero * i;
+        console.log(`${numero} x ${i} = ${resultado}`);
+    }
+}
+Tabuada();
+
+function ValidarSenha(): void {
+    let password: string;
+    do {
+        password = readlineSync.question('Digite uma senha: ');
+        let temOitoChar: boolean = password.length >= 8;
+        let temMaiuscula: boolean = /[A-Z]/.test(password);
+        let temMinuscula: boolean = /[a-z]/.test(password);
+        let temNumero: boolean = /[0-9]/.test(password);
+        if (
+            temOitoChar &&
+            temMaiuscula &&
+            temMinuscula &&
+            temNumero
+        ) {
+            console.log('\nSenha válida!\n');
+            break;
+        } else {
+            console.log('\nSenha inválida!\n');
+            if (!temOitoChar) {
+                console.log('- A senha deve ter pelo menos 8 caracteres');
+            }
+            if (!temMaiuscula) {
+                console.log('- A senha deve ter pelo menos uma letra maiúscula');
+            }
+            if (!temMinuscula) {
+                console.log('- A senha deve ter pelo menos uma letra minúscula');
+            }
+            if (!temNumero) {
+                console.log('- A senha deve ter pelo menos um número');
+            }
+            console.log();
+        }
+    } while (true);
+}
+ValidarSenha();
