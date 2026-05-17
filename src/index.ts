@@ -167,5 +167,3 @@ async function Sistema(): Promise <void> {
     } while (opcao !== '0');
 }
 Sistema();
-
-console.log('teste');
