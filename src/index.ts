@@ -36,6 +36,25 @@ function MaiorNumero(): void{
     console.log(`\nO maior número é: ${maior}\n`);
 }
 
+function ContarVogais(): void {
+    let texto: string;
+    let quantidade: number = 0;
+    texto = readlineSync.question('Digite uma frase: ');
+    for (let i = 0; i < texto.length; i++) {
+        let letra = texto[i].toLowerCase();
+        if (
+            letra === 'a' ||
+            letra === 'e' ||
+            letra === 'i' ||
+            letra === 'o' ||
+            letra === 'u'
+        ) {
+            quantidade++;
+        }
+    }
+    console.log(`\nQuantidade de vogais: ${quantidade}\n`);
+}
+
 
 function CalcularIMC(): void {
     const peso = Number(readlineSync.question('Digite seu peso (kg): \n'));
@@ -66,6 +85,7 @@ function Menu(): void {
     console.log (' 2 - VERIFICAR PAR OU IMPAR');
     console.log (' 3 - CALCULAR MEDIA DE 3 NOTAS')
     console.log (' 7 - MAIOR NUMERO DO ARRAY');
+    console.log (' 8 - CONTADOR DE VOGAIS');
     console.log (' 15 - CALCULADORA DE IMC');
     console.log (' 18 - CONTADOR DE CARACTERES')
     console.log (' 0 - SAIR')
@@ -88,6 +108,9 @@ do{
         case '7':
             await MaiorNumero();
                 break;
+        case '8':
+            await ContarVogais();
+            break;
         case '15':
             await CalcularIMC();
                 break;

@@ -14,7 +14,7 @@ function ParImpar() {
         console.log('\nNúmero ímpar\n');
     }
 }
-function calcularMedia() {
+function CalcularMedia() {
     let primeiraNota;
     let segundaNota;
     let terceiraNota;
@@ -34,6 +34,22 @@ function MaiorNumero() {
         }
     }
     console.log(`\nO maior número é: ${maior}\n`);
+}
+function ContarVogais() {
+    let texto;
+    let quantidade = 0;
+    texto = readline_sync_1.default.question('Digite uma frase: ');
+    for (let i = 0; i < texto.length; i++) {
+        let letra = texto[i].toLowerCase();
+        if (letra === 'a' ||
+            letra === 'e' ||
+            letra === 'i' ||
+            letra === 'o' ||
+            letra === 'u') {
+            quantidade++;
+        }
+    }
+    console.log(`\nQuantidade de vogais: ${quantidade}\n`);
 }
 function CalcularIMC() {
     const peso = Number(readline_sync_1.default.question('Digite seu peso (kg): \n'));
@@ -58,31 +74,35 @@ function ContadorCaracteres() {
     const quantidade = texto.length;
     console.log(`O texto possui ${quantidade} caracteres.\n`);
 }
-function menu() {
+function Menu() {
     console.log('MENU DE EXECICIOS \n');
     console.log(' 2 - VERIFICAR PAR OU IMPAR');
     console.log(' 3 - CALCULAR MEDIA DE 3 NOTAS');
     console.log(' 7 - MAIOR NUMERO DO ARRAY');
+    console.log(' 8 - CONTADOR DE VOGAIS');
     console.log(' 15 - CALCULADORA DE IMC');
     console.log(' 18 - CONTADOR DE CARACTERES');
     console.log(' 0 - SAIR');
 }
 // async e Promise void estão sendo usandos junto ao await para esperar uma resposta do usuario
-async function sistema() {
+async function Sistema() {
     let opcao;
     //usamos o Do While para que o o menu seja seja executado 1 vez antes da verificaçao
     do {
-        menu();
+        Menu();
         opcao = readline_sync_1.default.question('Escolha uma opcao: ');
         switch (opcao) {
             case '2':
                 await ParImpar();
                 break;
             case '3':
-                await calcularMedia();
+                await CalcularMedia();
                 break;
             case '7':
                 await MaiorNumero();
+                break;
+            case '8':
+                await ContarVogais();
                 break;
             case '15':
                 await CalcularIMC();
@@ -98,5 +118,5 @@ async function sistema() {
         }
     } while (opcao !== '0');
 }
-sistema();
+Sistema();
 //# sourceMappingURL=index.js.map
