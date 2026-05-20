@@ -1,6 +1,14 @@
 import readlineSync from 'readline-sync';
 
 
+function SomaDoisNumeros(): void {
+    const a: number = Number(readlineSync.question('Digite o primeiro número: '));
+    const b: number = Number(readlineSync.question('Digite o segundo número: '));
+    const resultado: number = a + b;
+    console.log(`\nResultado: ${a} + ${b} = ${resultado}\n`);
+}
+
+
 function ParImpar(): void{
     let numero: number;
     numero = Number (readlineSync.question('Digite um numero: '));
@@ -119,6 +127,7 @@ function ContadorCaracteres(): void {
 
 function Menu(): void {
     console.log ('\n===== MENU DE EXECICIOS =====');
+    console.log (' 1 - SOMA DE DOIS NUMEROS');
     console.log (' 2 - VERIFICAR PAR OU IMPAR');
     console.log (' 3 - CALCULAR MEDIA DE 3 NOTAS')
     console.log (' 7 - MAIOR NUMERO DO ARRAY');
@@ -137,6 +146,9 @@ async function Sistema(): Promise <void> {
         Menu();
         opcao = readlineSync.question('Escolha uma opcao: ');
         switch (opcao){
+            case '1':
+                await SomaDoisNumeros();
+                break;
             case '2':
                 await ParImpar();
                 break;
