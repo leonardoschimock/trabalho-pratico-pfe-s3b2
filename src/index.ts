@@ -65,6 +65,8 @@ function ContarVogais(): void {
 }
 
 
+
+
 function CalcularIMC(): void {
     const peso = Number(readlineSync.question('Digite seu peso (kg): \n'));
     const altura = Number(readlineSync.question('Digite sua altura (m): \n'));
