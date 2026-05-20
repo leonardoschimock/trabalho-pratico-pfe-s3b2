@@ -56,6 +56,97 @@ function ContarVogais(): void {
     console.log(`\nQuantidade de vogais: ${quantidade}\n`);
 }
 
+function CalculadoraSimples(): void {
+    const a: number = Number(readlineSync.question('Digite o primeiro número: '));
+    const b: number = Number(readlineSync.question('Digite o segundo número: '));
+    const operacao: string = readlineSync.question('Digite a operação (+, -, *, /): ');
+    let resultado: number;
+
+    switch (operacao) {
+        case '+':
+            resultado = a + b;
+            console.log(`\nResultado: ${a} + ${b} = ${resultado}\n`);
+            break;
+        case '-':
+            resultado = a - b;
+            console.log(`\nResultado: ${a} - ${b} = ${resultado}\n`);
+            break;
+        case '*':
+            resultado = a * b;
+            console.log(`\nResultado: ${a} * ${b} = ${resultado}\n`);
+            break;
+        case '/':
+            if (b === 0) {
+                console.log('\nErro: divisão por zero não é permitida.\n');
+            } else {
+                resultado = a / b;
+                console.log(`\nResultado: ${a} / ${b} = ${resultado}\n`);
+            }
+            break;
+        default:
+            console.log('\nOperação inválida!\n');
+    }
+}
+
+interface Veiculo {
+    marca: string;
+    modelo: string;
+    ano: number;
+    velocidadeAtual: number;
+    acelerar(incremento: number): void;
+    frear(decremento: number): void;
+    exibirInformacoes(): void;
+}
+
+class Carro implements Veiculo {
+    marca: string;
+    modelo: string;
+    ano: number;
+    velocidadeAtual: number;
+
+    constructor(marca: string, modelo: string, ano: number) {
+        this.marca = marca;
+        this.modelo = modelo;
+        this.ano = ano;
+        this.velocidadeAtual = 0;
+    }
+
+    acelerar(incremento: number): void {
+        this.velocidadeAtual += incremento;
+        console.log(`Acelerando... Velocidade atual: ${this.velocidadeAtual} km/h`);
+    }
+
+    frear(decremento: number): void {
+        this.velocidadeAtual -= decremento;
+        if (this.velocidadeAtual < 0) {
+            this.velocidadeAtual = 0;
+        }
+        console.log(`Freando... Velocidade atual: ${this.velocidadeAtual} km/h`);
+    }
+
+    exibirInformacoes(): void {
+        console.log(`\nVeículo: ${this.marca} ${this.modelo} (${this.ano})`);
+        console.log(`Velocidade atual: ${this.velocidadeAtual} km/h\n`);
+    }
+}
+
+function VeiculoECarro(): void {
+    const marca: string = readlineSync.question('Digite a marca do carro: ');
+    const modelo: string = readlineSync.question('Digite o modelo do carro: ');
+    const ano: number = Number(readlineSync.question('Digite o ano do carro: '));
+
+    const carro: Carro = new Carro(marca, modelo, ano);
+    carro.exibirInformacoes();
+
+    const incremento: number = Number(readlineSync.question('Digite o valor para acelerar (km/h): '));
+    carro.acelerar(incremento);
+
+    const decremento: number = Number(readlineSync.question('Digite o valor para frear (km/h): '));
+    carro.frear(decremento);
+
+    carro.exibirInformacoes();
+}
+
 
 function CalcularIMC(): void {
     const peso = Number(readlineSync.question('Digite seu peso (kg): \n'));
@@ -123,6 +214,8 @@ function Menu(): void {
     console.log (' 3 - CALCULAR MEDIA DE 3 NOTAS')
     console.log (' 7 - MAIOR NUMERO DO ARRAY');
     console.log (' 8 - CONTADOR DE VOGAIS');
+    console.log (' 9 - CALCULADORA SIMPLES');
+    console.log (' 13 - VEICULO E CARRO');
     console.log (' 15 - CALCULADORA DE IMC');
     console.log (' 16 - VALIDADOS DE SENHA');
     console.log (' 18 - CONTADOR DE CARACTERES')
@@ -148,6 +241,12 @@ async function Sistema(): Promise <void> {
                 break;
             case '8':
                 await ContarVogais();
+                break;
+            case '9':
+                await CalculadoraSimples();
+                break;
+            case '13':
+                await VeiculoECarro();
                 break;
             case '15':
                 await CalcularIMC();
