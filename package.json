@@ -15,5 +15,13 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs"
+  "type": "commonjs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leonardoschimock/trabalho-pratico-pfe-s3b2.git"
+  },
+  "bugs": {
+    "url": "https://github.com/leonardoschimock/trabalho-pratico-pfe-s3b2/issues"
+  },
+  "homepage": "https://github.com/leonardoschimock/trabalho-pratico-pfe-s3b2#readme"
 }
